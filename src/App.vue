@@ -28,7 +28,7 @@ const deletePlace = (name) => {
         <SearchField @place-list="addPlace" />
     </div>
     <div class="flex gap-x-4 flex-wrap items-center justify-center">
-        <WeatherCard @delete-place="deletePlace" :place="place" v-for="place in places" />
+        <WeatherCard @delete-place="deletePlace" :place="place" :key="place.location.name" v-for="place in places" />
     </div>
 </template>
 

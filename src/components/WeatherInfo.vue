@@ -1,5 +1,6 @@
 <script setup>
-const props = defineProps(['condition']);
+ defineProps(['condition']);
+ defineEmits(['remove-place'])
 const showMore = defineModel('showMore')
 </script>
 

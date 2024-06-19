@@ -1,5 +1,4 @@
 <script setup>
-import { onBeforeMount } from 'vue'
 const props = defineProps(['forecast'])
 
 </script>

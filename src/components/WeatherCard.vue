@@ -5,6 +5,7 @@ import WeatherInfo from './WeatherInfo.vue'
 import WeatherForCast from './WeatherForCast.vue'
 const props = defineProps(['place']);
 const { place } = props
+const isDay = ref(place.current.is_day)
 let showMore = ref(false)
 onBeforeMount(() => {
     console.log(props.place);
@@ -12,7 +13,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-    <div class="text-white p-10 rounded-lg shadow-lg gap-6 mb-6 relative overflow-hidden bg-blue-500 ">
+    <div class="text-white p-10 rounded-lg shadow-lg gap-6 mb-6 relative overflow-hidden" :class="[isDay?'bg-blue-500':'bg-slate-700']">
         <!-- Location & time -->
         <div class="mb-2 flex justify-between items-center">
             <div class="flex items-center justify-center gap-2">
@@ -36,7 +37,7 @@ onBeforeMount(() => {
 
         <!-- forecast -->
         <div>
-            <WeatherForCast :forecast="forecast" v-for="forecast in place.forecast.forecastday " />
+            <WeatherForCast :forecast="forecast" :key="ind" v-for="(forecast,ind) in place.forecast.forecastday " />
         </div>
 
         <!-- info -->
